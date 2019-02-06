@@ -9,6 +9,6 @@ Frites 1.5
 Tarte 3
 Commandes :
 Daniel Poulet 2
-Andree Tarte
+Andree Tarte 3
 Sophiane Frites 6
 Fin
