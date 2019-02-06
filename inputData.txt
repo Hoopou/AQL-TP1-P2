@@ -1,0 +1,14 @@
+Clients :
+Daniel
+Maxime
+Andree
+Sophiane
+Plats :
+Poulet 8
+Frites 1.5
+Tarte 3
+Commandes :
+Daniel Poulet 2
+Andree Tarte
+Sophiane Frites 6
+Fin
