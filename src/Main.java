@@ -1,12 +1,7 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
 import java.util.ArrayList;
-
-import com.sun.org.apache.bcel.internal.classfile.Field;
 
 public class Main {
 
