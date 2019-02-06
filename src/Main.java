@@ -21,6 +21,8 @@ public class Main {
 					}
 					conteneurActuel = new Conteneur(line.replace(":", ""));
 					
+				}else if (line.equals("Fin")){
+					arrayConteneur.add(conteneurActuel);
 				}else {
 					conteneurActuel.getListContenu().add(line);
 				}
