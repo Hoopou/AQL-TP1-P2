@@ -46,7 +46,7 @@ public class Main {
 			System.out.println("");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println("Les entrées du fichier ne sont pas conformes!");
 		};
 		
 		System.out.println("Bienvenue chez Barette!\r\n" + 
