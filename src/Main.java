@@ -19,22 +19,22 @@ public class Main {
 			String ancien = null;
 			String line = null;
 			while ((line = ficLecture.readLine()) != null) {
-				if(line.endsWith(":")) {
-					
-						ancien = line.replace(" :", "");
-					
-				}else if(ancien.equals("Clients")) {
+				if (line.endsWith(":")) {
+
+					ancien = line.replace(" :", "");
+
+				} else if (ancien.equals("Clients")) {
 					Client client = new Client(line);
 					arrayClients.add(client);
-				}else if(ancien.equals("Plats")) { 
-					Plat plat = new Plat(line.split(" ")[0] , Double.parseDouble(line.split(" ")[1]));
+				} else if (ancien.equals("Plats")) {
+					Plat plat = new Plat(line.split(" ")[0], Double.parseDouble(line.split(" ")[1]));
 					arrayPlats.add(plat);
-				}else if(ancien.equals("Commandes")) { 
-					for(Client nom : arrayClients) {
-						if(nom.getName().equals(line.split(" ")[0])) {
-							for(Plat plat : arrayPlats) {
-								if(plat.Equals(line.split(" ")[1])) {
-									Commandes commande = new Commandes(nom , plat , Integer.parseInt(line.split(" ")[2]));
+				} else if (ancien.equals("Commandes")) {
+					for (Client nom : arrayClients) {
+						if (nom.getName().equals(line.split(" ")[0])) {
+							for (Plat plat : arrayPlats) {
+								if (plat.Equals(line.split(" ")[1])) {
+									Commandes commande = new Commandes(nom, plat, Integer.parseInt(line.split(" ")[2]));
 									arrayCommandes.add(commande);
 									break;
 								}
@@ -43,13 +43,12 @@ public class Main {
 					}
 				}
 			}
-			
-			
+
 			System.out.println("");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Les entrées du fichier ne sont pas conformes!");
-			BufferedWriter writer = null ;
+			BufferedWriter writer = null;
 			try {
 				writer = new BufferedWriter(new FileWriter("output.txt"));
 				writer.write("Les entrées du fichier ne sont pas conformes!");
@@ -59,42 +58,40 @@ public class Main {
 				// TODO Auto-generated catch block
 				y.printStackTrace();
 			}
-		};
-		
-		System.out.println("Bienvenue chez Barette!\r\n" + 
-		"Factures:");
-		
-		BufferedWriter writer = null ;
+		}
+		;
+
+		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
+
+		BufferedWriter writer = null;
 		try {
 			writer = new BufferedWriter(new FileWriter("output.txt"));
-			writer.write("Bienvenue chez Barette!\r\n" + 
-					"Factures:\n");
+			writer.write("Bienvenue chez Barette!\r\n" + "Factures:\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		 
+
 		try {
-			for(Client c : arrayClients) {
+			for (Client c : arrayClients) {
 				writer.write(c.getName() + ": ");
 				System.out.print(c.getName() + ": ");
-				for(Commandes commande: arrayCommandes) {
-					if(commande.Contains(c)) {
+				for (Commandes commande : arrayCommandes) {
+					if (commande.Contains(c)) {
 						writer.write(commande.getFacture() + "$\n");
 						System.out.println(commande.getFacture() + "$");
 						break;
-					}
-					else if (commande == arrayCommandes.get(arrayCommandes.size()-1)){
+					} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
 						writer.write("0.00$\n");
 						System.out.println("0.00$");
 					}
 				}
 			}
 			writer.close();
-		}catch(Exception e) {
-			
+		} catch (Exception e) {
+
 		}
-		    
+
 	}
 
 }
