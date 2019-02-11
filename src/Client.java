@@ -1,3 +1,10 @@
+//*********************************************************************
+//
+// Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+// Date : 11 février 2019
+// Fichier : Client.java
+//
+//********************************************************************* 
 
 public class Client {
 	private String name = null;

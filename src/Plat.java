@@ -1,3 +1,10 @@
+//*********************************************************************
+//
+// Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+// Date : 11 février 2019
+// Fichier : Plat.java
+//
+//********************************************************************* 
 
 public class Plat {
 	private String name = null;

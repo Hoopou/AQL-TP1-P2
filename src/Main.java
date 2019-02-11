@@ -1,3 +1,11 @@
+//*********************************************************************
+//
+// Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+// Date : 11 février 2019
+// Fichier : Main.java
+//
+//********************************************************************* 
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;

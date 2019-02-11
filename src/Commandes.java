@@ -1,3 +1,11 @@
+//*********************************************************************
+//
+// Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+// Date : 11 février 2019
+// Fichier : Commandes.java
+//
+//********************************************************************* 
+
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
