@@ -8,7 +8,7 @@ Poulet 8
 Frites 1.5
 Tarte 3
 Commandes :
-Daniel Poulet 2
+Daniel Poulet 5
 Andree Tarte 3
-Sophiane Frites 6
+Sophiane Frites 7
 Fin

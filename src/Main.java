@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -44,21 +46,53 @@ public class Main {
 			
 			
 			System.out.println("");
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Les entrées du fichier ne sont pas conformes!");
+			BufferedWriter writer = null ;
+			try {
+				writer = new BufferedWriter(new FileWriter("output.txt"));
+				writer.write("Les entrées du fichier ne sont pas conformes!");
+				writer.close();
+				System.exit(0);
+			} catch (IOException y) {
+				// TODO Auto-generated catch block
+				y.printStackTrace();
+			}
 		};
 		
 		System.out.println("Bienvenue chez Barette!\r\n" + 
 		"Factures:");
 		
-		for(Client c : arrayClients) {
-			System.out.print(c.getName() + ": ");
-			for(Commandes commande: arrayCommandes) {
-				if(commande.Contains(c)) {
-					System.out.println(commande.getPlat().getPrix()*commande.getQuantite());
+		BufferedWriter writer = null ;
+		try {
+			writer = new BufferedWriter(new FileWriter("output.txt"));
+			writer.write("Bienvenue chez Barette!\r\n" + 
+					"Factures:\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 
+		try {
+			for(Client c : arrayClients) {
+				writer.write(c.getName() + ": ");
+				System.out.print(c.getName() + ": ");
+				for(Commandes commande: arrayCommandes) {
+					if(commande.Contains(c)) {
+						writer.write(commande.getFacture() + "$\n");
+						System.out.println(commande.getFacture() + "$");
+						break;
+					}
+					else if (commande == arrayCommandes.get(arrayCommandes.size()-1)){
+						writer.write("0.00$\n");
+						System.out.println("0.00$");
+					}
 				}
 			}
+			writer.close();
+		}catch(Exception e) {
+			
 		}
 		    
 	}

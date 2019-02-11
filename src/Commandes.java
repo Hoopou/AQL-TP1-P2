@@ -1,8 +1,10 @@
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 
 public class Commandes {
 	private Client client;
 	private Plat plat;
-	private int quantite;
+	private int quantite = 0;
 	
 	public Commandes(Client client , Plat plat , int quantite) {
 		this.client = client;
@@ -24,5 +26,10 @@ public class Commandes {
 	
 	public int getQuantite() {
 		return this.quantite;
+	}
+	
+	public String getFacture() {
+		NumberFormat formatter = new DecimalFormat("#0.00");    
+		return formatter.format(getPlat().getPrix()*getQuantite());			
 	}
 }

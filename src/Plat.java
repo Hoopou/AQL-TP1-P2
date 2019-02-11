@@ -1,7 +1,7 @@
 
 public class Plat {
 	private String name = null;
-	private double prix;
+	private double prix = 0.0;
 	public Plat(String name , double prix) {
 		this.name = name;
 		this.prix = prix;
