@@ -1,0 +1,15 @@
+1-En-tête du programme
+	Un encadré spécifiant le nom du ou des programmeurs ainsi qu’une brève description de
+	l’utilité du programme (4 ou 5 lignes maximum) doit être placé au début du programme. Cet
+	encadré doit être fait comme ci-dessous.
+
+2-Blancs
+	Un espace doit être inséré avant et après tous les opérateurs. Aucun blanc ne doit apparaître 
+	à l’intérieur des parenthèses () et des crochets []. Aérer le code avec des lignes blanches 
+	placées entre les blocs de logique, comme des paragraphes dans un texte. Éviter plus d’une 
+	ligne blanche d’affilée.
+
+3-Retraits de ligne
+	À chaque fois qu’un nouveau bloc d’instructions est débuté, et qu’il est subordonné à une 
+	ligne précédente (if, while, etc.), alors il faut le mettre en retrait par rapport à la 
+	ligne précédente.
