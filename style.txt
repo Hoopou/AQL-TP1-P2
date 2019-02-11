@@ -1,7 +1,13 @@
 1-En-tête du programme
-	Un encadré spécifiant le nom du ou des programmeurs ainsi qu’une brève description de
-	l’utilité du programme (4 ou 5 lignes maximum) doit être placé au début du programme. Cet
+	Un encadré spécifiant le nom du ou des programmeurs doit être placé au début du programme. Cet
 	encadré doit être fait comme ci-dessous.
+	//*********************************************************************
+	//
+	// Programmeur : Prenom Nom
+	// Date : Jour Mois Année
+	// Fichier : Nom du fichier
+	//
+	//********************************************************************* 
 
 2-Blancs
 	Un espace doit être inséré avant et après tous les opérateurs. Aucun blanc ne doit apparaître 
