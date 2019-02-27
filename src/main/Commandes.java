@@ -1,3 +1,4 @@
+package main;
 //*********************************************************************
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
