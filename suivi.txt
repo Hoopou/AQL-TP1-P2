@@ -1,1 +1,4 @@
-CrÃ©er un package de test - Boutot - Vincent
+Créer et remplir le fichier suivi.txt 		- Jean-Sébastien Beaulne
+Créer un package de test 					- Vincent Boutot
+Créer le package DataObject					- Vincent Boutot
+Créer la classe Helper 						- Vincent Boutot
