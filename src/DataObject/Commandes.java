@@ -36,9 +36,13 @@ public class Commandes {
 	public int getQuantite() {
 		return this.quantite;
 	}
+	
+	public double getPrix() {
+		return getPlat().getPrix() * getQuantite();
+	}
 
 	public String getFacture() {
 		NumberFormat formatter = new DecimalFormat("#0.00");
-		return formatter.format(getPlat().getPrix() * getQuantite());
+		return formatter.format(getPrix());
 	}
 }

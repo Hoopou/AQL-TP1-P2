@@ -7,11 +7,6 @@ package main;
 //
 //********************************************************************* 
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import DataObject.Client;
@@ -19,12 +14,12 @@ import DataObject.Commandes;
 import DataObject.Plat;
 
 public class Main {
+	private static FileManager fileManager = new FileManager();
+	private static ArrayList<Client> arrayClients = new ArrayList<Client>();
+	private static ArrayList<Plat> arrayPlats = new ArrayList<Plat>();
+	private static ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();
 
 	public static void main(String[] args) {
-		ArrayList<Client> arrayClients = new ArrayList<Client>();
-		ArrayList<Plat> arrayPlats = new ArrayList<Plat>();
-		ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();
-		FileManager fileManager = new FileManager();
 		fileManager.setReader("inputData.txt");
 		try {
 			String ancien = null;
@@ -65,6 +60,12 @@ public class Main {
 			}
 		}
 		fileManager.closeAll();
+		ecrireFactures();
+		fileManager.closeAll();
+
+	}
+	
+	private static void ecrireFactures() {
 		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
 
 		fileManager.setWriter("output.txt");
@@ -81,15 +82,12 @@ public class Main {
 					System.out.println(commande.getFacture() + "$");
 					break;
 				} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
-					fileManager.write("0.00$\n");
-					System.out.println("0.00$");
+//					fileManager.write("0.00$\n");
+//					System.out.println("0.00$");
 				}
 			}
 		}
-		fileManager.closeAll();
-
 	}
-	
 	
 
 }
