@@ -21,17 +21,15 @@ import DataObject.Plat;
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println(Helper.getNomFacture());
 		ArrayList<Client> arrayClients = new ArrayList<Client>();
 		ArrayList<Plat> arrayPlats = new ArrayList<Plat>();
 		ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();
-
-		BufferedReader ficLecture = null;
+		FileManager fileManager = new FileManager();
+		fileManager.setReader("inputData.txt");
 		try {
-			ficLecture = new BufferedReader(new FileReader("inputData.txt"));
 			String ancien = null;
 			String line = null;
-			while ((line = ficLecture.readLine()) != null) {
+			while ((line = fileManager.readLine()) != null) {
 				if (line.endsWith(":")) {
 
 					ancien = line.replace(" :", "");
@@ -61,49 +59,34 @@ public class Main {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Les entrées du fichier ne sont pas conformes!");
-			BufferedWriter writer = null;
-			try {
-				writer = new BufferedWriter(new FileWriter("output.txt"));
-				writer.write("Les entrées du fichier ne sont pas conformes!");
-				writer.close();
+			fileManager.setWriter("output.txt");
+			if(!fileManager.write("Les entrées du fichier ne sont pas conformes!")) {
 				System.exit(0);
-			} catch (IOException y) {
-				// TODO Auto-generated catch block
-				y.printStackTrace();
 			}
 		}
-		;
-
+		fileManager.closeAll();
 		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
 
-		BufferedWriter writer = null;
-		try {
-			writer = new BufferedWriter(new FileWriter("output.txt"));
-			writer.write("Bienvenue chez Barette!\r\n" + "Factures:\n");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		fileManager.setWriter("output.txt");
+		
+		fileManager.writeLine("Bienvenue chez Barette!\r");
+		fileManager.writeLine("Factures:");
 
-		try {
-			for (Client c : arrayClients) {
-				writer.write(c.getName() + ": ");
-				System.out.print(c.getName() + ": ");
-				for (Commandes commande : arrayCommandes) {
-					if (commande.Contains(c)) {
-						writer.write(commande.getFacture() + "$\n");
-						System.out.println(commande.getFacture() + "$");
-						break;
-					} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
-						writer.write("0.00$\n");
-						System.out.println("0.00$");
-					}
+		for (Client c : arrayClients) {
+			fileManager.write(c.getName() + ": ");
+			System.out.print(c.getName() + ": ");
+			for (Commandes commande : arrayCommandes) {
+				if (commande.Contains(c)) {
+					fileManager.write(commande.getFacture() + "$\n");
+					System.out.println(commande.getFacture() + "$");
+					break;
+				} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
+					fileManager.write("0.00$\n");
+					System.out.println("0.00$");
 				}
 			}
-			writer.close();
-		} catch (Exception e) {
-
 		}
+		fileManager.closeAll();
 
 	}
 
