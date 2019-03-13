@@ -14,10 +14,14 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import DataObject.Client;
+import DataObject.Commandes;
+import DataObject.Plat;
+
 public class Main {
 
 	public static void main(String[] args) {
-
+		System.out.println(Helper.getNomFacture());
 		ArrayList<Client> arrayClients = new ArrayList<Client>();
 		ArrayList<Plat> arrayPlats = new ArrayList<Plat>();
 		ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();

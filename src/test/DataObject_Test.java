@@ -9,7 +9,7 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import main.Client;
+import DataObject.Client;
 
 @RunWith(MockitoJUnitRunner.class)
 class DataObject_Test {

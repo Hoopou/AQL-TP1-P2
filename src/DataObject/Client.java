@@ -1,27 +1,26 @@
-package main;
+package DataObject;
 //*********************************************************************
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
-// Fichier : Plat.java
+// Fichier : Client.java
 //
 //********************************************************************* 
 
-public class Plat {
+public class Client {
 	private String name = null;
-	private double prix = 0.0;
 
-	public Plat(String name, double prix) {
+	public Client(String name) {
 		this.name = name;
-		this.prix = prix;
 	}
 
-	public double getPrix() {
-		return this.prix;
+	public String getName() {
+		return name;
 	}
 
-	public boolean Equals(Object arg0) {
+	public boolean Equals(Client client) {
 		// TODO Auto-generated method stub
-		return name.equals(arg0.toString());
+		return name.equals(client.getName());
 	}
+
 }
