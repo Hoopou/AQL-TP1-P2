@@ -1,3 +1,5 @@
+Début de la partie 3 du projet AQL - Taches
+
 Créer et remplir le fichier suivi.txt 		- Jean-Sébastien Beaulne
 Créer un package de test 					- Vincent Boutot
 Créer le package DataObject					- Vincent Boutot
