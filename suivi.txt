@@ -1,6 +1,8 @@
 Début de la partie 3 du projet AQL - Taches
 
-Créer et remplir le fichier suivi.txt 		- Jean-Sébastien Beaulne
+Créer et remplir le fichier suivi.txt 				- Jean-Sébastien Beaulne
 Créer un package de test 					- Vincent Boutot
 Créer le package DataObject					- Vincent Boutot
 Créer la classe Helper 						- Vincent Boutot
+Créer le FileManager et ajouter la gestion d'erreurs		- Vincent Boutot
+Gérer les erreurs du format et de lecture du fichier		- Vincent Boutot

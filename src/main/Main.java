@@ -77,12 +77,15 @@ public class Main {
 	}
 	
 	private static void ecrireFactures() {
-		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
-
-		fileManager.setWriter("output.txt");
+		fileManager.setWriter(Helper.getNomFacture());
 		
-		fileManager.writeLine("Bienvenue chez Barette!\r");
-		fileManager.writeLine("Factures:");
+		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");		
+		
+		fileManager.writeLine("Commandes et erreurs incorrectes:");
+		fileManager.writeLine("dfsrgfs");
+		
+		fileManager.writeLine("\nBienvenue chez Barette!\r");
+		fileManager.writeLine("Facture:");
 
 		for (Client c : arrayClients) {
 			for (Commandes commande : arrayCommandes) {

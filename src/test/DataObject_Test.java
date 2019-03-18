@@ -33,5 +33,6 @@ class DataObject_Test {
 	void testFile() {
 		assertEquals(true, Helper.isInputFileConform("./inputData.txt") , "Le fichier est conforme");
 	}
+	//test sur fontion non creee
 	
 }
