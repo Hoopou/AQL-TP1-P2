@@ -1,5 +1,6 @@
 package main;
 //*********************************************************************
+
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
@@ -55,11 +56,16 @@ public class Main {
 			// TODO Auto-generated catch block
 			System.out.println("Les entrées du fichier ne sont pas conformes!");
 			fileManager.setWriter("output.txt");
-			if(!fileManager.write("Les entrées du fichier ne sont pas conformes!")) {
-				System.exit(0);
+			try {
+				if (!fileManager.write("Les entrées du fichier ne sont pas conformes!")) {
+					System.exit(0);
+				}
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 		}
-		
+
 		try {
 			fileManager.closeAll();
 		} catch (Exception e) {
@@ -75,8 +81,9 @@ public class Main {
 		}
 
 	}
-	
+
 	private static void ecrireFactures() {
+
 		fileManager.setWriter(Helper.getNomFacture());
 		
 		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");		
@@ -90,7 +97,12 @@ public class Main {
 		for (Client c : arrayClients) {
 			for (Commandes commande : arrayCommandes) {
 				if (commande.Contains(c) && commande.getFacture() != null) {
-					fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n");
+					try {
+						fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n");
+					} catch (Exception e) {
+						// TODO Auto-generated catch block
+						System.out.println("Erreur lors de l'écriture dans le fichier");
+					}
 					System.out.println(c.getName() + ": " + commande.getFacture() + "$");
 					break;
 				} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
@@ -100,6 +112,5 @@ public class Main {
 			}
 		}
 	}
-	
 
 }

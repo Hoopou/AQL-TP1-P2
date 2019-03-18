@@ -11,7 +11,7 @@ public class Helper {
 
 	public static String getNomFacture() {
 		Calendar cal = Calendar.getInstance();
-		SimpleDateFormat sdf = new SimpleDateFormat("YYYY:MM:dd-HH:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("YYYY_MM_dd-HH_mm_ss");
 		return "Facture-du-" + sdf.format(cal.getTime()) + ".txt";
 	}
 
@@ -22,31 +22,42 @@ public class Helper {
 		arrayContenu.add(new FileContent("fin"));
 
 		boolean isConform = true;
-		for(FileContent tempContenu : arrayContenu){
+		for (FileContent tempContenu : arrayContenu) {
 			FileManager fm = new FileManager();
 			fm.setReader(path);
-			String line = fm.readLine();
-		
+			String line = null;
+			try {
+				line = fm.readLine();
+			} catch (Exception e1) {
+				// TODO Auto-generated catch block
+				System.out.println("Erreur lors de la lecture du fichier");
+			}
+
 			while (line != null) {
 				line = getRefactoredLigne(line);
-				if(line.equals(tempContenu.getLigne())) {
+				if (line.equals(tempContenu.getLigne())) {
 //					System.out.println("est présent: " + line);
 					tempContenu.setEstPresent(true);
 					break;
 				}
-				line = fm.readLine();
-			}//fin while
-			
+				try {
+					line = fm.readLine();
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					System.out.println("Erreur lors de la lecture du fichier");
+				}
+			} // fin while
+
 			try {
 				fm.closeAll();
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
+			}
 		}
-		
-		for(FileContent tempContenu : arrayContenu){
-			if(!tempContenu.getEstPresent()) {
+
+		for (FileContent tempContenu : arrayContenu) {
+			if (!tempContenu.getEstPresent()) {
 				isConform = false;
 			}
 		}
@@ -62,7 +73,7 @@ public class Helper {
 	private static class FileContent {
 		public String ligne = "";
 		public boolean estPresent = false;
-		
+
 		public FileContent(String ligne) {
 			setLigne(ligne);
 		}

@@ -17,7 +17,7 @@ class DataObject_Test {
 
 	@Mock
 	Client client = new Client("Serge");
-	
+
 	@Test
 	void Client_Name() {
 		assertEquals("Serge", client.getName(), "Nom du client");
@@ -28,11 +28,15 @@ class DataObject_Test {
 		Client clientTemp = new Client("Serge");
 		assertEquals(true, client.Equals(clientTemp), "Equals du client");
 	}
-	
+
 	@Test
 	void testFile() {
-		assertEquals(true, Helper.isInputFileConform("./inputData.txt") , "Le fichier est conforme");
+		assertEquals(true, Helper.isInputFileConform("./inputData.txt"), "Le fichier est conforme");
 	}
+<<<<<<< HEAD
 	//test sur fontion non creee
 	
+=======
+
+>>>>>>> origin/dev
 }

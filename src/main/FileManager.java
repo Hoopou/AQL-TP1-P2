@@ -43,23 +43,24 @@ public class FileManager {
 		}
 	}
 	
-	public boolean write(String line) {
+	public boolean write(String line) throws WritingErreur {
 		boolean success = false;
 		try {
 			writer.write(line);
 			success = true;
 		} catch (Exception e) {
-			// TODO: handle exception
+			throw new WritingErreur();
 		}
 		return success;
 	}
 	
-	public String readLine() {
+	public String readLine() throws ReadingErreur {
 		String line = null;
 		try {
 			line = reader.readLine();
 		} catch (Exception e) {
 			// TODO: handle exception
+			throw new ReadingErreur();
 		}
 		return line;
 	}
@@ -87,8 +88,9 @@ public class FileManager {
 		
 	}
 	
-	private class ClosingErreur extends Exception{
-		
-	}
+	private class ClosingErreur extends Exception{}
+	private class ReadingErreur extends Exception{}
+	private class WritingErreur extends Exception{}
+	private class InitialisationErreur extends Exception{}
 	
 }
