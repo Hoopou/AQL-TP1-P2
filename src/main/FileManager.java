@@ -55,7 +55,7 @@ public class FileManager {
 	}
 	
 	public String readLine() {
-		String line = "";
+		String line = null;
 		try {
 			line = reader.readLine();
 		} catch (Exception e) {

@@ -10,6 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import DataObject.Client;
+import main.Helper;
 
 @RunWith(MockitoJUnitRunner.class)
 class DataObject_Test {
@@ -26,6 +27,11 @@ class DataObject_Test {
 	void Client() {
 		Client clientTemp = new Client("Serge");
 		assertEquals(true, client.Equals(clientTemp), "Equals du client");
+	}
+	
+	@Test
+	void testFile() {
+		assertEquals(true, Helper.isInputFileConform("./inputData.txt") , "Le fichier est conforme");
 	}
 	
 }
