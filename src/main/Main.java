@@ -59,9 +59,20 @@ public class Main {
 				System.exit(0);
 			}
 		}
-		fileManager.closeAll();
+		
+		try {
+			fileManager.closeAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		ecrireFactures();
-		fileManager.closeAll();
+		try {
+			fileManager.closeAll();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	

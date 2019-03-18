@@ -30,14 +30,19 @@ public class Helper {
 			while (line != null) {
 				line = getRefactoredLigne(line);
 				if(line.equals(tempContenu.getLigne())) {
-					System.out.println("est présent: " + line);
+//					System.out.println("est présent: " + line);
 					tempContenu.setEstPresent(true);
 					break;
 				}
 				line = fm.readLine();
 			}//fin while
 			
-			fm.closeAll();			
+			try {
+				fm.closeAll();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 		}
 		
 		for(FileContent tempContenu : arrayContenu){

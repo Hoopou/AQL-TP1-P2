@@ -64,18 +64,31 @@ public class FileManager {
 		return line;
 	}
 	
-	public void closeAll() {
-		try {
-			reader.close();
-		} catch (Exception e) {
-			// TODO: handle exception
+	public void closeAll() throws Exception {
+		boolean erreur = false;
+		if(reader != null) {
+			try {
+				reader.close();
+			} catch (Exception e) {
+				erreur = true;
+			}
+		}
+		if(writer != null) {
+			try {
+				writer.close();
+			} catch (Exception e) {
+				erreur = true;
+			}			
 		}
 		
-		try {
-			writer.close();
-		} catch (Exception e) {
-			// TODO: handle exception
+		if(erreur) {
+			throw new ClosingErreur();
 		}
+		
+	}
+	
+	private class ClosingErreur extends Exception{
+		
 	}
 	
 }
