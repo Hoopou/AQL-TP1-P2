@@ -42,6 +42,8 @@ public class Commandes {
 	}
 
 	public String getFacture() {
+		if(getPrix() == 0)
+			return null;
 		NumberFormat formatter = new DecimalFormat("#0.00");
 		return formatter.format(getPrix());
 	}

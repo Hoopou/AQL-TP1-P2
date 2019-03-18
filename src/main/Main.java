@@ -74,12 +74,10 @@ public class Main {
 		fileManager.writeLine("Factures:");
 
 		for (Client c : arrayClients) {
-			fileManager.write(c.getName() + ": ");
-			System.out.print(c.getName() + ": ");
 			for (Commandes commande : arrayCommandes) {
-				if (commande.Contains(c)) {
-					fileManager.write(commande.getFacture() + "$\n");
-					System.out.println(commande.getFacture() + "$");
+				if (commande.Contains(c) && commande.getFacture() != null) {
+					fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n");
+					System.out.println(c.getName() + ": " + commande.getFacture() + "$");
 					break;
 				} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
 //					fileManager.write("0.00$\n");
