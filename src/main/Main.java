@@ -1,6 +1,9 @@
 package main;
 //*********************************************************************
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
@@ -107,7 +110,7 @@ public class Main {
 
 		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
 		try {
-			fileManager.writeLine("Commandes et erreurs incorrectes:");
+			fileManager.writeLine("Informations incorrectes et erreurs dans fichier:");
 			fileManager.writeLine("dfsrgfs");
 
 			fileManager.writeLine("\nBienvenue chez Barette!\r");
@@ -116,11 +119,17 @@ public class Main {
 			System.out.println("Erreur lors de l'écriture dans le fichier de sortie");
 		}
 
+		double total = 0;
+		boolean factureVide = true;
+		NumberFormat formatter = new DecimalFormat("#0.00");
+		
 		for (Client c : arrayClients) {
 			for (Commandes commande : arrayCommandes) {
 				if (commande.Contains(c) && commande.getFacture() != null) {
 					try {
 						fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n");
+						total += commande.getPrix();
+						factureVide = false;
 					} catch (Exception e) {
 						// TODO Auto-generated catch block
 						System.out.println("Erreur lors de l'écriture dans le fichier");
@@ -132,6 +141,14 @@ public class Main {
 //					System.out.println("0.00$");
 				}
 			}
+		}
+		if(!factureVide) {
+			try {
+				fileManager.writeLine("TPS : " + formatter.format(total * 0.05) + "$");
+				fileManager.writeLine("TVQ : " + formatter.format(total * 0.10) + "$");
+				fileManager.writeLine("Total : " + formatter.format(total * 1.15) + "$");
+			} catch (Exception e) {
+			}	
 		}
 	}
 

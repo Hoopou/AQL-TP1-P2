@@ -45,6 +45,4 @@ class DataObject_Test {
 		}
 		assertEquals(true, erreur, "Un fichier inexistant est considéré comme existant par le programme");
 	}
-
-	// test sur fontion non creee
 }
