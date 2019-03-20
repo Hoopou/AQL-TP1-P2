@@ -34,6 +34,4 @@ class DataObject_Test {
 		assertEquals(true, Helper.isInputFileConform("./inputData.txt"), "Le fichier est conforme");
 	}
 	
-	@Test
-	
 }
