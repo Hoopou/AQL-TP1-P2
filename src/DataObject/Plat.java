@@ -16,6 +16,7 @@ public class Plat implements InterfaceLigneFichier {
 		this.prix = prix;
 	}
 
+	
 	public double getPrix() {
 		return this.prix;
 	}
