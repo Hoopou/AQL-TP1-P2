@@ -1,5 +1,0 @@
-Bienvenue chez Barette!
-Factures:
-Daniel: 40,00$
-Andree: 9,00$
-Sophiane: 10,50$

@@ -7,7 +7,7 @@ package DataObject;
 //
 //********************************************************************* 
 
-public class Plat {
+public class Plat implements InterfaceLigneFichier {
 	private String name = null;
 	private double prix = 0.0;
 

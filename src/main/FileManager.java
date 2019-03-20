@@ -7,39 +7,42 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+import org.junit.internal.runners.InitializationError;
+
 public class FileManager {
 	private BufferedReader reader;
 	private BufferedWriter writer;
 	
-	public boolean setReader(String file) {
+	public boolean setReader(String file) throws InitializationError {
 		boolean success = false;
 		try {
 			reader = new BufferedReader(new FileReader(file));
 			success = true;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new InitializationError();
 		}
 		return success;
 	}
 	
-	public boolean setWriter(String file) {
+	public boolean setWriter(String file) throws InitializationError {
 		boolean success = false;
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			success = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new InitializationError();
 		}
 		return success;
 	}
 	
-	public void writeLine(String line) {
+	public void writeLine(String line) throws WritingErreur {
 		try {
 			writer.write(line + "\n");
 		} catch (Exception e) {
 			// TODO: handle exception
+			throw new WritingErreur();
 		}
 	}
 	

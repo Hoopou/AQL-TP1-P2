@@ -10,10 +10,11 @@ package DataObject;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class Commandes {
+public class Commandes implements InterfaceLigneFichier{
 	private Client client;
 	private Plat plat;
 	private int quantite = 0;
+	private final double taxe= 1.15;
 
 	public Commandes(Client client, Plat plat, int quantite) {
 		this.client = client;
@@ -46,5 +47,11 @@ public class Commandes {
 			return null;
 		NumberFormat formatter = new DecimalFormat("#0.00");
 		return formatter.format(getPrix());
+	}
+
+	@Override
+	public void InterfaceLigneFichier(String ligneFichier) {
+		// TODO Auto-generated method stub
+		
 	}
 }
