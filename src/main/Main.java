@@ -10,6 +10,8 @@ package main;
 
 import java.util.ArrayList;
 
+import org.junit.internal.runners.InitializationError;
+
 import DataObject.Client;
 import DataObject.Commandes;
 import DataObject.Plat;
@@ -21,7 +23,13 @@ public class Main {
 	private static ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();
 
 	public static void main(String[] args) {
-		fileManager.setReader("inputData.txt");
+
+		try {
+			fileManager.setReader("inputData.txt");
+		} catch (InitializationError e2) {
+			System.out.println("Erreur lors de l'initialisation du lecteur du fichier input");
+			System.exit(0);
+		}
 		try {
 			String ancien = null;
 			String line = null;
@@ -34,7 +42,8 @@ public class Main {
 					Client client = new Client(line);
 					arrayClients.add(client);
 				} else if (ancien.equals("Plats")) {
-					Plat plat = new Plat(line.split(" ")[0], Double.parseDouble(line.split(" ")[1]));
+					Plat plat = new Plat(line.split(" ")[0], Double.parseDouble(line.split(" ")[1])); // pour ligne du
+																										// plat
 					arrayPlats.add(plat);
 				} else if (ancien.equals("Commandes")) {
 					for (Client nom : arrayClients) {
@@ -55,14 +64,21 @@ public class Main {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Les entrées du fichier ne sont pas conformes!");
-			fileManager.setWriter("output.txt");
+			try {
+				fileManager.setWriter(Helper.getNomFacture());
+			} catch (Exception g) {
+				System.out.println("Erreur fatal de lecture ");
+				System.exit(0);
+			}
+
 			try {
 				if (!fileManager.write("Les entrées du fichier ne sont pas conformes!")) {
 					System.exit(0);
 				}
 			} catch (Exception e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+				System.out.println("Erreur fatal d'écriture dns le fichier output ");
+				System.exit(0);
 			}
 		}
 
@@ -83,16 +99,22 @@ public class Main {
 	}
 
 	private static void ecrireFactures() {
+		try {
+			fileManager.setWriter(Helper.getNomFacture());
+		} catch (Exception e) {
+			System.out.println("Erreur lors de la création du fichier de sortie");
+		}
 
-		fileManager.setWriter(Helper.getNomFacture());
-		
-		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");		
-		
-		fileManager.writeLine("Commandes et erreurs incorrectes:");
-		fileManager.writeLine("dfsrgfs");
-		
-		fileManager.writeLine("\nBienvenue chez Barette!\r");
-		fileManager.writeLine("Facture:");
+		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
+		try {
+			fileManager.writeLine("Commandes et erreurs incorrectes:");
+			fileManager.writeLine("dfsrgfs");
+
+			fileManager.writeLine("\nBienvenue chez Barette!\r");
+			fileManager.writeLine("Facture:");
+		} catch (Exception e) {
+			System.out.println("Erreur lors de l'écriture dans le fichier de sortie");
+		}
 
 		for (Client c : arrayClients) {
 			for (Commandes commande : arrayCommandes) {

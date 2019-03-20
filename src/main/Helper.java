@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import org.junit.internal.runners.InitializationError;
+
 public class Helper {
 
 	private static ArrayList<FileContent> arrayContenu = new ArrayList<FileContent>();
@@ -14,7 +16,7 @@ public class Helper {
 		SimpleDateFormat sdf = new SimpleDateFormat("YYYY_MM_dd-HH_mm_ss");
 		return "Facture-du-" + sdf.format(cal.getTime()) + ".txt";
 	}
-
+	
 	public static boolean isInputFileConform(String path) {
 		arrayContenu.add(new FileContent("clients:"));
 		arrayContenu.add(new FileContent("commandes:"));
@@ -24,7 +26,13 @@ public class Helper {
 		boolean isConform = true;
 		for (FileContent tempContenu : arrayContenu) {
 			FileManager fm = new FileManager();
-			fm.setReader(path);
+			try {
+				fm.setReader(path);
+			} catch (Exception e2) {
+				// TODO Auto-generated catch block
+				System.out.println("Erreur lors de l'initialisation du lecteur du fichier input");
+				break;
+			}
 			String line = null;
 			try {
 				line = fm.readLine();
