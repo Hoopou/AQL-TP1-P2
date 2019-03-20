@@ -30,28 +30,23 @@ public class Main {
 			System.out.println("Erreur lors de l'initialisation du lecteur du fichier input");
 			System.exit(0);
 		}
+		
 		try {
 			String ancien = null;
 			String line = null;
 			while ((line = fileManager.readLine()) != null) {
 				if (line.endsWith(":")) {
-
 					ancien = line.replace(" :", "");
-
 				} else if (ancien.equals("Clients")) {
-					Client client = new Client(line);
-					arrayClients.add(client);
-				} else if (ancien.equals("Plats")) {
-					Plat plat = new Plat(line.split(" ")[0], Double.parseDouble(line.split(" ")[1])); // pour ligne du
-																										// plat
-					arrayPlats.add(plat);
+					arrayClients.add(new Client(line));
+				} else if (ancien.equals("Plats")) {																									
+					arrayPlats.add(new Plat(line));
 				} else if (ancien.equals("Commandes")) {
 					for (Client nom : arrayClients) {
 						if (nom.getName().equals(line.split(" ")[0])) {
 							for (Plat plat : arrayPlats) {
 								if (plat.Equals(line.split(" ")[1])) {
-									Commandes commande = new Commandes(nom, plat, Integer.parseInt(line.split(" ")[2]));
-									arrayCommandes.add(commande);
+									arrayCommandes.add(new Commandes(nom, plat, line));
 									break;
 								}
 							}

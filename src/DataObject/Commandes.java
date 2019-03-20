@@ -11,16 +11,19 @@ package DataObject;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class Commandes implements InterfaceLigneFichier {
+public class Commandes {
 	private Client client;
 	private Plat plat;
 	private int quantite = 0;
-	private final double taxe = 1.15;
 
 	public Commandes(Client client, Plat plat, int quantite) {
 		this.client = client;
 		this.plat = plat;
 		this.quantite = quantite;
+	}
+	
+	public Commandes(Client client, Plat plat, String ligneFichier) {
+		this(client, plat, Integer.parseInt(ligneFichier.split(" ")[2]));
 	}
 
 	public boolean Contains(Client client) {
@@ -48,11 +51,5 @@ public class Commandes implements InterfaceLigneFichier {
 			return null;
 		NumberFormat formatter = new DecimalFormat("#0.00");
 		return formatter.format(getPrix());
-	}
-
-	@Override
-	public void InterfaceLigneFichier(String ligneFichier) {
-		// TODO Auto-generated method stub
-
 	}
 }

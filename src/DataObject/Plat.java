@@ -8,7 +8,7 @@ package DataObject;
 //
 //********************************************************************* 
 
-public class Plat implements InterfaceLigneFichier {
+public class Plat{
 	private String name = null;
 	private double prix = 0.0;
 
@@ -16,7 +16,10 @@ public class Plat implements InterfaceLigneFichier {
 		this.name = name;
 		this.prix = prix;
 	}
-
+	public Plat(String ligneFichier) {
+		this(ligneFichier.split(" ")[0], Double.parseDouble(ligneFichier.split(" ")[1]));
+	}
+	
 	public double getPrix() {
 		return this.prix;
 	}
@@ -24,11 +27,5 @@ public class Plat implements InterfaceLigneFichier {
 	public boolean Equals(Object arg0) {
 		// TODO Auto-generated method stub
 		return name.equals(arg0.toString());
-	}
-
-	@Override
-	public void InterfaceLigneFichier(String ligneFichier) {
-		// TODO Auto-generated method stub
-
 	}
 }
