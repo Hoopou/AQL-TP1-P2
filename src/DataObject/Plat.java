@@ -24,4 +24,10 @@ public class Plat implements InterfaceLigneFichier {
 		// TODO Auto-generated method stub
 		return name.equals(arg0.toString());
 	}
+
+	@Override
+	public void InterfaceLigneFichier(String ligneFichier) {
+		// TODO Auto-generated method stub
+		
+	}
 }

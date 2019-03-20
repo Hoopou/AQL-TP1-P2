@@ -1,4 +1,16 @@
 /bin/
+bin/
+/bin
+*/bin
+/bin*
 /.classpath
+/.classpath/
+.classpath
+*.classpath*
 /mockito-all-1.10.19.jar
+*/mockito-all-1.10.19.jar
+*mockito-all-1.10.19.jar
 /Facture-du-*.txt
+/Facture-du-*
+*/Facture-du-*
+*Facture-du-*
