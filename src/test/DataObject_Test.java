@@ -47,5 +47,4 @@ class DataObject_Test {
 	}
 
 	// test sur fontion non creee
-
 }
