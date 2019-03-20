@@ -33,7 +33,7 @@ class DataObject_Test {
 	void testFile() {
 		assertEquals(true, Helper.isInputFileConform("./inputData.txt"), "Le fichier est conforme");
 	}
-	
+
 	@Test
 	void testFichierInputExistant() {
 		boolean erreur = false;
@@ -46,6 +46,6 @@ class DataObject_Test {
 		assertEquals(true, erreur, "Un fichier inexistant est considéré comme existant par le programme");
 	}
 
-	//test sur fontion non creee
+	// test sur fontion non creee
 
 }

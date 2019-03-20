@@ -1,5 +1,6 @@
 package DataObject;
 //*********************************************************************
+
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
@@ -7,7 +8,7 @@ package DataObject;
 //
 //********************************************************************* 
 
-public class Client implements InterfaceLigneFichier{
+public class Client implements InterfaceLigneFichier {
 	private String name = null;
 
 	public Client(String name) {
@@ -25,7 +26,7 @@ public class Client implements InterfaceLigneFichier{
 
 	@Override
 	public void InterfaceLigneFichier(String ligneFichier) {
-		
+
 	}
 
 }

@@ -1,5 +1,6 @@
 package DataObject;
 //*********************************************************************
+
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
@@ -16,7 +17,6 @@ public class Plat implements InterfaceLigneFichier {
 		this.prix = prix;
 	}
 
-	
 	public double getPrix() {
 		return this.prix;
 	}
@@ -29,6 +29,6 @@ public class Plat implements InterfaceLigneFichier {
 	@Override
 	public void InterfaceLigneFichier(String ligneFichier) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
