@@ -23,7 +23,10 @@ public class Main {
 	private static ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();
 
 	public static void main(String[] args) {
-
+		System.out.println(Helper.isInputFileConform("inputErreurFormat2.txt"));
+		System.out.println(Helper.clientsVide("inputErreurFormat2.txt"));
+		System.out.println(Helper.PlatsVide("inputErreurFormat2.txt"));
+		System.out.println(Helper.CommandesVide("inputErreurFormat2.txt"));
 		boolean Reader = fileManager.setReader("inputErreurAucunClient.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
 		if(!Reader) {
 			System.err.println("Arret du programme");
