@@ -64,11 +64,11 @@ public class Main {
 			}
 		}
 
-			fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
+		fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
 
 		ecrireFactures();
 
-			fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
+		fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
 
 
 	}

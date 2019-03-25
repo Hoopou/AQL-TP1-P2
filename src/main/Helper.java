@@ -25,16 +25,17 @@ public class Helper {
 
 		boolean isConform = true;
 		for (FileContent tempContenu : arrayContenu) {
-			FileManager fm = new FileManager();
 			
+//region initialisation_fileManager
+			FileManager fm = new FileManager();
 			if (fm.setReader(path, "Erreur lors de l'initialisation du lecteur du fichier input")) {
 				System.out.println("Arret du programme!");
 				System.exit(0);
 			}
+//endregion
 			
 			String line = null;
 			line = fm.readLine("Erreur lors de la lecture du fichier");
-
 
 			while (line != null) {
 				line = getRefactoredLigne(line);
@@ -67,6 +68,7 @@ public class Helper {
 	private static class FileContent {
 		public String ligne = "";
 		public boolean estPresent = false;
+		public ArrayList<String> arrayLigne = new ArrayList<String>();
 
 		public FileContent(String ligne) {
 			setLigne(ligne);
@@ -86,6 +88,10 @@ public class Helper {
 
 		public void setEstPresent(boolean estPresent) {
 			this.estPresent = estPresent;
+		}
+		
+		public ArrayList<String> getArrayLignes(){
+			return arrayLigne;
 		}
 	}
 }

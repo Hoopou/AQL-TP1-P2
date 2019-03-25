@@ -7,8 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.junit.internal.runners.InitializationError;
-
 public class FileManager {
 	private BufferedReader reader;
 	private BufferedWriter writer;
@@ -20,7 +18,7 @@ public class FileManager {
 			success = true;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			System.err.println(erreurString);
+			logErreur(erreurString);
 		}
 		return success;
 	}
@@ -32,7 +30,7 @@ public class FileManager {
 			success = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			System.err.println(erreurString);
+			logErreur(erreurString);
 		}
 		return success;
 	}
@@ -42,7 +40,7 @@ public class FileManager {
 			writer.write(line + "\n");
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.err.println(erreurString);
+			logErreur(erreurString);
 		}
 	}
 	
@@ -52,7 +50,7 @@ public class FileManager {
 			writer.write(line);
 			success = true;
 		} catch (Exception e) {
-			System.err.println(erreurString);
+			logErreur(erreurString);
 		}
 		return success;
 	}
@@ -63,7 +61,7 @@ public class FileManager {
 			line = reader.readLine();
 		} catch (Exception e) {
 			// TODO: handle exception
-			System.err.println(erreurString);
+			logErreur(erreurString);
 		}
 		return line;
 	}
@@ -86,9 +84,16 @@ public class FileManager {
 		}
 		
 		if(erreur) {
-			System.err.println(erreurString);
+			logErreur(erreurString);
 		}
 		
+	}
+	
+	private void logErreur(String erreur) {
+		System.err.println(erreur);
+		if(writer != null) {
+			writeLine(erreur, "");
+		}
 	}
 	
 }
