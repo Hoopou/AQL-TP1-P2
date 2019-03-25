@@ -10,6 +10,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 import DataObject.Client;
 import main.FileManager;
 import main.Helper;
+import main.Main;
 
 @RunWith(MockitoJUnitRunner.class)
 class DataObject_Test {
@@ -43,5 +44,10 @@ class DataObject_Test {
 			erreur = true;
 		}
 		assertEquals(true, erreur, "Un fichier inexistant est considéré comme existant par le programme");
+	}
+	
+	@Test
+	void textTaxes() {
+		assertEquals(65.4235, Main.calculerTaxes(56.89), "Calcul de taxe fonctionne");
 	}
 }

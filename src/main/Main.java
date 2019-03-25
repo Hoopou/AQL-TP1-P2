@@ -24,6 +24,7 @@ public class Main {
 	private static ArrayList<Client> arrayClients = new ArrayList<Client>();
 	private static ArrayList<Plat> arrayPlats = new ArrayList<Plat>();
 	private static ArrayList<Commandes> arrayCommandes = new ArrayList<Commandes>();
+	private static NumberFormat formatter = new DecimalFormat("#0.00");
 
 	public static void main(String[] args) {
 
@@ -87,7 +88,6 @@ public class Main {
 
 		double total = 0;
 		boolean factureVide = true;
-		NumberFormat formatter = new DecimalFormat("#0.00");
 		
 		for (Client c : arrayClients) {
 			for (Commandes commande : arrayCommandes) {
@@ -104,11 +104,18 @@ public class Main {
 				}
 			}
 		}
-		if(factureVide) {
+		if(!factureVide) {
 			fileManager.writeLine("\nSous-Total:\t" + formatter.format(total) + "$", "Erreur lors de l'écriture dans le fichier");
-			fileManager.writeLine("TPS:\t\t" + formatter.format((total * 0.05)) + "$", "Erreur lors de l'écriture dans le fichier");
-			fileManager.writeLine("TVQ:\t\t" + formatter.format((total * 0.1)) + "$", "Erreur lors de l'écriture dans le fichier");
-			fileManager.writeLine("Total:\t\t" + formatter.format((total * 1.15)) + "$", "Erreur lors de l'écriture dans le fichier");
+			total = calculerTaxes(total);
+			fileManager.writeLine("Total:\t\t" + formatter.format((total)) + "$", "Erreur lors de l'écriture dans le fichier");
 		}
+	}
+	
+	public static double calculerTaxes(double total) {
+		double retour;
+		fileManager.writeLine("TPS:\t\t" + formatter.format((total * 0.05)) + "$", "Erreur lors de l'écriture dans le fichier");
+		fileManager.writeLine("TVQ:\t\t" + formatter.format((total * 0.1)) + "$", "Erreur lors de l'écriture dans le fichier");
+		retour = total * 1.15;
+		return retour;
 	}
 }
