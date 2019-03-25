@@ -26,20 +26,15 @@ public class Helper {
 		boolean isConform = true;
 		for (FileContent tempContenu : arrayContenu) {
 			FileManager fm = new FileManager();
-			try {
-				fm.setReader(path);
-			} catch (Exception e2) {
-				// TODO Auto-generated catch block
-				System.out.println("Erreur lors de l'initialisation du lecteur du fichier input");
-				break;
+			
+			if (fm.setReader(path, "Erreur lors de l'initialisation du lecteur du fichier input")) {
+				System.out.println("Arret du programme!");
+				System.exit(0);
 			}
+			
 			String line = null;
-			try {
-				line = fm.readLine();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				System.out.println("Erreur lors de la lecture du fichier");
-			}
+			line = fm.readLine("Erreur lors de la lecture du fichier");
+
 
 			while (line != null) {
 				line = getRefactoredLigne(line);
@@ -48,20 +43,11 @@ public class Helper {
 					tempContenu.setEstPresent(true);
 					break;
 				}
-				try {
-					line = fm.readLine();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					System.out.println("Erreur lors de la lecture du fichier");
-				}
+
+				line = fm.readLine("Erreur lors de la lecture du fichier");
 			} // fin while
 
-			try {
-				fm.closeAll();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			fm.closeAll("Erreur lors de la fermeture du reader ou du writer");
 		}
 
 		for (FileContent tempContenu : arrayContenu) {

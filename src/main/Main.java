@@ -24,22 +24,21 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		try {
-			fileManager.setReader("inputData.txt");
-		} catch (InitializationError e2) {
-			System.out.println("Erreur lors de l'initialisation du lecteur du fichier input");
+		boolean Reader = fileManager.setReader("inputErreurAucunClient.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
+		if(!Reader) {
+			System.err.println("Arret du programme");
 			System.exit(0);
 		}
-		
+
 		try {
 			String ancien = null;
 			String line = null;
-			while ((line = fileManager.readLine()) != null) {
+			while ((line = fileManager.readLine("Erreur lors de la lecture dans le fichier text")) != null) {
 				if (line.endsWith(":")) {
 					ancien = line.replace(" :", "");
 				} else if (ancien.equals("Clients")) {
 					arrayClients.add(new Client(line));
-				} else if (ancien.equals("Plats")) {																									
+				} else if (ancien.equals("Plats")) {
 					arrayPlats.add(new Plat(line));
 				} else if (ancien.equals("Commandes")) {
 					for (Client nom : arrayClients) {
@@ -57,69 +56,37 @@ public class Main {
 
 			System.out.println("");
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			System.out.println("Les entrées du fichier ne sont pas conformes!");
-			try {
-				fileManager.setWriter(Helper.getNomFacture());
-			} catch (Exception g) {
-				System.out.println("Erreur fatal de lecture ");
-				System.exit(0);
-			}
+			fileManager.setWriter(Helper.getNomFacture(), "Erreur fatal de lecture ");
 
-			try {
-				if (!fileManager.write("Les entrées du fichier ne sont pas conformes!")) {
-					System.exit(0);
-				}
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				System.out.println("Erreur fatal d'écriture dns le fichier output ");
+			if (!fileManager.write("Les entrées du fichier ne sont pas conformes!",
+					"Erreur fatal d'écriture dns le fichier output ")) {
 				System.exit(0);
 			}
 		}
 
-		try {
-			fileManager.closeAll();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
+
 		ecrireFactures();
-		try {
-			fileManager.closeAll();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+			fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
+
 
 	}
 
 	private static void ecrireFactures() {
-		try {
-			fileManager.setWriter(Helper.getNomFacture());
-		} catch (Exception e) {
-			System.out.println("Erreur lors de la création du fichier de sortie");
-		}
+		fileManager.setWriter(Helper.getNomFacture(), "Erreur lors de la création du fichier de sortie");
 
-		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:");
-		try {
-			fileManager.writeLine("Commandes et erreurs incorrectes:");
-			fileManager.writeLine("dfsrgfs");
-
-			fileManager.writeLine("\nBienvenue chez Barette!\r");
-			fileManager.writeLine("Facture:");
-		} catch (Exception e) {
-			System.out.println("Erreur lors de l'écriture dans le fichier de sortie");
-		}
+		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:\n");
+		fileManager.writeLine("Commandes et erreurs incorrectes:",
+				"Erreur lors de l'écriture dans le fichier de sortie");
+		fileManager.writeLine("\nBienvenue chez Barette!\r", "Erreur lors de l'écriture dans le fichier de sortie");
+		fileManager.writeLine("Facture:", "Erreur lors de l'écriture dans le fichier de sortie");
 
 		for (Client c : arrayClients) {
 			for (Commandes commande : arrayCommandes) {
 				if (commande.Contains(c) && commande.getFacture() != null) {
-					try {
-						fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n");
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						System.out.println("Erreur lors de l'écriture dans le fichier");
-					}
+					fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n",
+							"Erreur lors de l'écriture dans le fichier");
 					System.out.println(c.getName() + ": " + commande.getFacture() + "$");
 					break;
 				} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
