@@ -37,13 +37,8 @@ class DataObject_Test {
 	@Test
 	void testFichierInputExistant() {
 		boolean erreur = false;
-		try {
-			new FileManager().setReader("FichierInexistant.txt", "Erreur dans l'initialisation du fichier text FichierInexistant.txt");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			erreur = true;
-		}
-		assertEquals(true, erreur, "Un fichier inexistant est considéré comme existant par le programme");
+		erreur = new FileManager().setReader("FichierInexistant.txt", "Le fichier FichierInexistant.txt n'existe pas");
+		assertEquals(false, erreur, "Un fichier inexistant est considéré comme existant par le programme");
 	}
 	
 	@Test

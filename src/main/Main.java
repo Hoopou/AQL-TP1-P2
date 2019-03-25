@@ -27,8 +27,15 @@ public class Main {
 	private static NumberFormat formatter = new DecimalFormat("#0.00");
 
 	public static void main(String[] args) {
+		//test 
+		System.out.println(Helper.isInputFileConform("inputErreurFormat2.txt"));
+		System.out.println(Helper.clientsVide("inputErreurFormat2.txt"));
+		System.out.println(Helper.PlatsVide("inputErreurFormat2.txt"));
+		System.out.println(Helper.CommandesVide("inputErreurFormat2.txt"));
+		
+		
+		boolean Reader = fileManager.setReader("inputErreurAucunClient.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
 
-		boolean Reader = fileManager.setReader("inputData.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
 		if(!Reader) {
 			System.err.println("Arret du programme");
 			System.exit(0);

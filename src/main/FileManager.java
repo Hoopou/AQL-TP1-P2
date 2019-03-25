@@ -68,7 +68,11 @@ public class FileManager {
 			line = reader.readLine();
 		} catch (Exception e) {
 			// TODO: handle exception
-			logErreur(erreurString);
+			if(e.getMessage().equals("Stream closed")) {
+				return null;
+			}else {
+				logErreur(erreurString);
+			}
 		}
 		return line;
 	}
