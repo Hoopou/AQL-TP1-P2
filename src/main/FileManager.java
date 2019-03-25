@@ -1,4 +1,11 @@
 package main;
+//*********************************************************************
+//
+//Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+//Date : 4 mars 2019
+//Fichier : FileManager.java
+//
+//********************************************************************* 
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

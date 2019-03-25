@@ -1,6 +1,5 @@
 package DataObject;
 //*********************************************************************
-
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
@@ -15,7 +14,6 @@ public class Commandes implements InterfaceLigneFichier {
 	private Client client;
 	private Plat plat;
 	private int quantite = 0;
-	private final double taxe = 1.15;
 
 	public Commandes(Client client, Plat plat, int quantite) {
 		this.client = client;

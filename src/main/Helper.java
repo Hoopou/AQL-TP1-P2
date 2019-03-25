@@ -1,4 +1,11 @@
 package main;
+//*********************************************************************
+//
+//Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+//Date : 4 mars 2019
+//Fichier : Helper.java
+//
+//********************************************************************* 
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

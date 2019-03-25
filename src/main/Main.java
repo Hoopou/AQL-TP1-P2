@@ -1,15 +1,15 @@
 package main;
+
 //*********************************************************************
+//
+//Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
+//Date : 11 février 2019
+//Fichier : Main.java
+//
+//********************************************************************* 
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-
-//
-// Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
-// Date : 11 février 2019
-// Fichier : Main.java
-//
-//********************************************************************* 
 
 import java.util.ArrayList;
 

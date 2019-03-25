@@ -1,6 +1,5 @@
 package DataObject;
 //*********************************************************************
-
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
 // Date : 11 février 2019
