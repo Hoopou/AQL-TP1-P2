@@ -14,68 +14,66 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import org.junit.internal.runners.InitializationError;
-
 public class FileManager {
 	private BufferedReader reader;
 	private BufferedWriter writer;
 	
-	public boolean setReader(String file) throws InitializationError {
+	public boolean setReader(String file, String erreurString) {
 		boolean success = false;
 		try {
 			reader = new BufferedReader(new FileReader(file));
 			success = true;
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
-			throw new InitializationError();
+			logErreur(erreurString);
 		}
 		return success;
 	}
 	
-	public boolean setWriter(String file) throws InitializationError {
+	public boolean setWriter(String file, String erreurString){
 		boolean success = false;
 		try {
 			writer = new BufferedWriter(new FileWriter(file));
 			success = true;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			throw new InitializationError();
+			logErreur(erreurString);
 		}
 		return success;
 	}
 	
-	public void writeLine(String line) throws WritingErreur {
+	public void writeLine(String line, String erreurString){
 		try {
 			writer.write(line + "\n");
 		} catch (Exception e) {
 			// TODO: handle exception
-			throw new WritingErreur();
+			logErreur(erreurString);
 		}
 	}
 	
-	public boolean write(String line) throws WritingErreur {
+	public boolean write(String line, String erreurString){
 		boolean success = false;
 		try {
 			writer.write(line);
 			success = true;
 		} catch (Exception e) {
-			throw new WritingErreur();
+			logErreur(erreurString);
 		}
 		return success;
 	}
 	
-	public String readLine() throws ReadingErreur {
+	public String readLine(String erreurString) {
 		String line = null;
 		try {
 			line = reader.readLine();
 		} catch (Exception e) {
 			// TODO: handle exception
-			throw new ReadingErreur();
+			logErreur(erreurString);
 		}
 		return line;
 	}
 	
-	public void closeAll() throws Exception {
+	public void closeAll(String erreurString) {
 		boolean erreur = false;
 		if(reader != null) {
 			try {
@@ -93,14 +91,16 @@ public class FileManager {
 		}
 		
 		if(erreur) {
-			throw new ClosingErreur();
+			logErreur(erreurString);
 		}
 		
 	}
 	
-	private class ClosingErreur extends Exception{}
-	private class ReadingErreur extends Exception{}
-	private class WritingErreur extends Exception{}
-	private class InitialisationErreur extends Exception{}
+	private void logErreur(String erreur) {
+		System.err.println(erreur);
+		if(writer != null) {
+			writeLine(erreur, "");
+		}
+	}
 	
 }

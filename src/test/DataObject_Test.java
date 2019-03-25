@@ -2,7 +2,6 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.internal.runners.InitializationError;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -38,7 +37,7 @@ class DataObject_Test {
 	void testFichierInputExistant() {
 		boolean erreur = false;
 		try {
-			new FileManager().setReader("FichierInexistant.txt");
+			new FileManager().setReader("FichierInexistant.txt", "Erreur dans l'initialisation du fichier text FichierInexistant.txt");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			erreur = true;

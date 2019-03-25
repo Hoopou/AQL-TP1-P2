@@ -32,21 +32,17 @@ public class Helper {
 
 		boolean isConform = true;
 		for (FileContent tempContenu : arrayContenu) {
+			
+//region initialisation_fileManager
 			FileManager fm = new FileManager();
-			try {
-				fm.setReader(path);
-			} catch (Exception e2) {
-				// TODO Auto-generated catch block
-				System.out.println("Erreur lors de l'initialisation du lecteur du fichier input");
-				break;
+			if (fm.setReader(path, "Erreur lors de l'initialisation du lecteur du fichier input")) {
+				System.out.println("Arret du programme!");
+				System.exit(0);
 			}
+//endregion
+			
 			String line = null;
-			try {
-				line = fm.readLine();
-			} catch (Exception e1) {
-				// TODO Auto-generated catch block
-				System.out.println("Erreur lors de la lecture du fichier");
-			}
+			line = fm.readLine("Erreur lors de la lecture du fichier");
 
 			while (line != null) {
 				line = getRefactoredLigne(line);
@@ -55,20 +51,11 @@ public class Helper {
 					tempContenu.setEstPresent(true);
 					break;
 				}
-				try {
-					line = fm.readLine();
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					System.out.println("Erreur lors de la lecture du fichier");
-				}
+
+				line = fm.readLine("Erreur lors de la lecture du fichier");
 			} // fin while
 
-			try {
-				fm.closeAll();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			fm.closeAll("Erreur lors de la fermeture du reader ou du writer");
 		}
 
 		for (FileContent tempContenu : arrayContenu) {
@@ -88,6 +75,7 @@ public class Helper {
 	private static class FileContent {
 		public String ligne = "";
 		public boolean estPresent = false;
+		public ArrayList<String> arrayLigne = new ArrayList<String>();
 
 		public FileContent(String ligne) {
 			setLigne(ligne);
@@ -107,6 +95,10 @@ public class Helper {
 
 		public void setEstPresent(boolean estPresent) {
 			this.estPresent = estPresent;
+		}
+		
+		public ArrayList<String> getArrayLignes(){
+			return arrayLigne;
 		}
 	}
 }

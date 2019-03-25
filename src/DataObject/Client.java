@@ -7,7 +7,7 @@ package DataObject;
 //
 //********************************************************************* 
 
-public class Client implements InterfaceLigneFichier {
+public class Client {
 	private String name = null;
 
 	public Client(String name) {
@@ -21,11 +21,6 @@ public class Client implements InterfaceLigneFichier {
 	public boolean Equals(Client client) {
 		// TODO Auto-generated method stub
 		return name.equals(client.getName());
-	}
-
-	@Override
-	public void InterfaceLigneFichier(String ligneFichier) {
-
 	}
 
 }
