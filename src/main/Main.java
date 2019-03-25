@@ -20,6 +20,11 @@ import DataObject.Commandes;
 import DataObject.Plat;
 
 public class Main {
+	
+	private static String input = "input.txt";
+	private static ArrayList<String> arrayErreurs = new ArrayList<String>();
+	private static boolean format = false;
+	
 	private static FileManager fileManager = new FileManager();
 	private static ArrayList<Client> arrayClients = new ArrayList<Client>();
 	private static ArrayList<Plat> arrayPlats = new ArrayList<Plat>();
@@ -28,13 +33,30 @@ public class Main {
 
 	public static void main(String[] args) {
 		//test 
-		System.out.println(Helper.isInputFileConform("inputErreurFormat2.txt"));
-		System.out.println(Helper.clientsVide("inputErreurFormat2.txt"));
-		System.out.println(Helper.PlatsVide("inputErreurFormat2.txt"));
-		System.out.println(Helper.CommandesVide("inputErreurFormat2.txt"));
+		System.out.println(Helper.isInputFileConform(input));
+		System.out.println(Helper.clientsVide(input));
+		System.out.println(Helper.PlatsVide(input));
+		System.out.println(Helper.CommandesVide(input));
 		
+		//Erreur format fichier incorrect
+		if(!Helper.isInputFileConform(input)) {
+			arrayErreurs.add("Erreur: Le format du fichier est incorrect.");
+			format = true;
+		}
+		//Erreur aucun clients
+		if(Helper.clientsVide(input)) {
+			arrayErreurs.add("Erreur: Le fichier ne contient aucun clients.");
+		}
+		//Erreur aucun plat
+		if(Helper.PlatsVide(input)) {
+			arrayErreurs.add("Erreur: Le fichier ne contient aucun plats.");
+		}
+		//Erreur aucune commande
+		if(Helper.CommandesVide(input)) {
+			arrayErreurs.add("Erreur: Le fichier ne contient aucune commandes.");
+		}
 		
-		boolean Reader = fileManager.setReader("inputErreurAucunClient.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
+		boolean Reader = fileManager.setReader(input, "Erreur lors de l'initialisation du lecteur du fichier input");
 
 		if(!Reader) {
 			System.err.println("Arret du programme");
@@ -88,8 +110,11 @@ public class Main {
 		fileManager.setWriter(Helper.getNomFacture(), "Erreur lors de la création du fichier de sortie");
 
 		System.out.println("Bienvenue chez Barette!\r\n" + "Factures:\n");
-		fileManager.writeLine("Commandes et erreurs incorrectes:",
+		fileManager.writeLine("Erreurs et commandes incorrectes:",
 				"Erreur lors de l'écriture dans le fichier de sortie");
+		
+		ecrireErreurs(fileManager);
+		
 		fileManager.writeLine("\nBienvenue chez Barette!\r", "Erreur lors de l'écriture dans le fichier de sortie");
 		fileManager.writeLine("Facture:", "Erreur lors de l'écriture dans le fichier de sortie");
 
@@ -113,16 +138,27 @@ public class Main {
 		}
 		if(!factureVide) {
 			fileManager.writeLine("\nSous-Total:\t" + formatter.format(total) + "$", "Erreur lors de l'écriture dans le fichier");
-			total = calculerTaxes(total);
-			fileManager.writeLine("Total:\t\t" + formatter.format((total)) + "$", "Erreur lors de l'écriture dans le fichier");
+			fileManager.writeLine("TPS:\t\t" + formatter.format(calculerTaxes(total, 0.05)) + "$", "Erreur lors de l'écriture dans le fichier");
+			fileManager.writeLine("TVQ:\t\t" + formatter.format(calculerTaxes(total, 0.1)) + "$", "Erreur lors de l'écriture dans le fichier");
+			fileManager.writeLine("Total:\t\t" + formatter.format(calculerTaxes(total, 1.15)) + "$", "Erreur lors de l'écriture dans le fichier");
 		}
 	}
 	
-	public static double calculerTaxes(double total) {
+	public static double calculerTaxes(double total, double t) {
 		double retour;
-		fileManager.writeLine("TPS:\t\t" + formatter.format((total * 0.05)) + "$", "Erreur lors de l'écriture dans le fichier");
-		fileManager.writeLine("TVQ:\t\t" + formatter.format((total * 0.1)) + "$", "Erreur lors de l'écriture dans le fichier");
-		retour = total * 1.15;
+		retour = total * t;
 		return retour;
+	}
+	
+	public static void ecrireErreurs(FileManager fileManager) {
+		if(format) {
+			fileManager.writeLine("Erreur: Format du fichier incorrect", "Erreur lors de l'écriture dans le fichier");
+			fileManager.closeAll("Erreur lors de la fermeture du reader ou du writer");
+			System.exit(0);
+		}else {
+			for(String a : arrayErreurs) {
+				fileManager.writeLine(a, "Erreur lors de l'écriture dans le fichier");
+			}	
+		}
 	}
 }

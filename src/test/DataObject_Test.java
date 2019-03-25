@@ -42,7 +42,22 @@ class DataObject_Test {
 	}
 	
 	@Test
-	void textTaxes() {
-		assertEquals(65.4235, Main.calculerTaxes(56.89), "Calcul de taxe fonctionne");
+	void testTaxes() {
+		assertEquals(5.75, Main.calculerTaxes(5, 1.15), "Calcul de taxe fonctionne");
+	}
+	
+	@Test
+	void testClientsVide() {
+		assertEquals(true, Helper.clientsVide("./inputErreurAucunClient.txt"), "Il n'y a aucun client dans le fichier inputErreurAucunClient.txt");
+	}
+	
+	@Test
+	void testPlatsVide() {
+		assertEquals(true, Helper.PlatsVide("./inputErreurAucunPlat.txt"), "Il n'y a aucun plats dans le fichier inputErreurAcuunPlat.txt");
+	}
+	
+	@Test
+	void testCommandesVide() {
+		assertEquals(true, Helper.CommandesVide("./inputErreurAucuneCommande.txt"), "Il n'y a aucune commandes dans le fichier inputErreurAucuneCommande.txt");
 	}
 }
