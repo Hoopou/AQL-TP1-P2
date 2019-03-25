@@ -6,3 +6,7 @@ Créer le package DataObject					- Vincent Boutot
 Créer la classe Helper 						- Vincent Boutot
 Créer le FileManager et ajouter la gestion d'erreurs		- Vincent Boutot
 Gérer les erreurs du format et de lecture du fichier		- Vincent Boutot
+Créer des fichier de commandes pour les tests			- Jean-Sébastien Beaulne
+Créer des test 							- Jean-Sébastien Beaulne
+Gérer l'affichage des erreurs dans la facture			- Jean-Sébastien Beaulne
+Ajouter les taxes dans la facture				- Vincent Boutot

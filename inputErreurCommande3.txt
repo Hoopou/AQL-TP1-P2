@@ -1,0 +1,17 @@
+Clients :
+Roger
+A
+B
+C
+Plats :
+A 5
+B 4
+C 3
+D 2
+E 6
+F 7
+Commandes :
+Roger F 4
+A A 5
+C D 
+Fin
