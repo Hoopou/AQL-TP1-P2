@@ -27,7 +27,7 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		boolean Reader = fileManager.setReader("inputErreurAucunClient.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
+		boolean Reader = fileManager.setReader("inputData.txt", "Erreur lors de l'initialisation du lecteur du fichier input");
 		if(!Reader) {
 			System.err.println("Arret du programme");
 			System.exit(0);
@@ -94,6 +94,8 @@ public class Main {
 				if (commande.Contains(c) && commande.getFacture() != null) {
 					fileManager.write(c.getName() + ": " + commande.getFacture() + "$\n",
 							"Erreur lors de l'écriture dans le fichier");
+					total += commande.getPrix();
+					factureVide = false;
 					System.out.println(c.getName() + ": " + commande.getFacture() + "$");
 					break;
 				} else if (commande == arrayCommandes.get(arrayCommandes.size() - 1)) {
@@ -102,6 +104,11 @@ public class Main {
 				}
 			}
 		}
+		if(factureVide) {
+			fileManager.writeLine("\nSous-Total:\t" + formatter.format(total) + "$", "Erreur lors de l'écriture dans le fichier");
+			fileManager.writeLine("TPS:\t\t" + formatter.format((total * 0.05)) + "$", "Erreur lors de l'écriture dans le fichier");
+			fileManager.writeLine("TVQ:\t\t" + formatter.format((total * 0.1)) + "$", "Erreur lors de l'écriture dans le fichier");
+			fileManager.writeLine("Total:\t\t" + formatter.format((total * 1.15)) + "$", "Erreur lors de l'écriture dans le fichier");
+		}
 	}
-
 }
