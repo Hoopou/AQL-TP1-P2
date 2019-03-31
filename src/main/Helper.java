@@ -11,6 +11,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import org.junit.platform.commons.annotation.Testable;
+
 public class Helper {
 
 
@@ -135,7 +137,8 @@ public class Helper {
 		rawLine = rawLine.replaceAll(" ", "");
 		return rawLine.toLowerCase();
 	}
-
+	
+	
 	private static class FileContent {
 		public String ligne = "";
 		public boolean estPresent = false;
