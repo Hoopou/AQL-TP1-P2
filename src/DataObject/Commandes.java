@@ -1,3 +1,4 @@
+package DataObject;
 //*********************************************************************
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
@@ -19,6 +20,10 @@ public class Commandes {
 		this.plat = plat;
 		this.quantite = quantite;
 	}
+	
+	public Commandes(Client client, Plat plat, String ligneFichier) {
+		this(client, plat, Integer.parseInt(ligneFichier.split(" ")[2]));
+	}
 
 	public boolean Contains(Client client) {
 		return this.client.Equals(client);
@@ -36,8 +41,14 @@ public class Commandes {
 		return this.quantite;
 	}
 
+	public double getPrix() {
+		return getPlat().getPrix() * getQuantite();
+	}
+
 	public String getFacture() {
+		if (getPrix() == 0)
+			return null;
 		NumberFormat formatter = new DecimalFormat("#0.00");
-		return formatter.format(getPlat().getPrix() * getQuantite());
+		return formatter.format(getPrix());
 	}
 }

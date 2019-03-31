@@ -1,3 +1,4 @@
+package DataObject;
 //*********************************************************************
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne

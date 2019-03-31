@@ -1,3 +1,4 @@
+package DataObject;
 //*********************************************************************
 //
 // Programmeur : Vincent Boutot et Jean-Sébastien Beaulne
@@ -6,7 +7,7 @@
 //
 //********************************************************************* 
 
-public class Plat {
+public class Plat{
 	private String name = null;
 	private double prix = 0.0;
 
@@ -14,7 +15,10 @@ public class Plat {
 		this.name = name;
 		this.prix = prix;
 	}
-
+	public Plat(String ligneFichier) {
+		this(ligneFichier.split(" ")[0], Double.parseDouble(ligneFichier.split(" ")[1]));
+	}
+	
 	public double getPrix() {
 		return this.prix;
 	}
