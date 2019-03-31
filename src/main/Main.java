@@ -10,10 +10,7 @@ package main;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-
 import java.util.ArrayList;
-
-import org.junit.internal.runners.InitializationError;
 
 import DataObject.Client;
 import DataObject.Commandes;
@@ -32,11 +29,6 @@ public class Main {
 	private static NumberFormat formatter = new DecimalFormat("#0.00");
 
 	public static void main(String[] args) {
-		//test 
-		System.out.println(Helper.isInputFileConform(input));
-		System.out.println(Helper.clientsVide(input));
-		System.out.println(Helper.PlatsVide(input));
-		System.out.println(Helper.CommandesVide(input));
 		
 		//Erreur format fichier incorrect
 		if(!Helper.isInputFileConform(input)) {
